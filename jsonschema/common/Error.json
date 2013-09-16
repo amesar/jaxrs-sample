@@ -1,0 +1,13 @@
+{
+	"$schema" : "http://json-schema.org/draft-03/schema#",
+	"id" : "Error",
+	"description" : "Error for response body",
+	"type" : "object",
+	"properties" : {
+		"error" : { 
+			"type" : "string", 
+			"required" : true 
+		}
+	},
+	"additionalProperties" : false
+}

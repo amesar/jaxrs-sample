@@ -1,0 +1,33 @@
+{
+	"$schema" : "http://json-schema.org/draft-03/schema#",
+	"id" : "http://json-schema.org/draft-03/schema#",
+	"description" : "Address",
+	"type" : "object",
+	"properties" : {
+		"street_line_1" : { 
+			"type" : "string", 
+			"required" : false 
+		},
+		"street_line_2" : { 
+			"type" : "string", 
+			"required" : false 
+		},
+		"city_name" : { 
+			"type" : "string", 
+			"required" : false 
+		},
+		"state_code" : { 
+			"type" : "string", 
+			"required" : false 
+		},
+		"zip_code" : { 
+			"type" : "string", 
+			"required" : false 
+		},
+		"country_code" : { 
+			"type" : "string", 
+			"required" : false 
+		}
+	},
+	"additionalProperties" : false
+}
