@@ -9,7 +9,7 @@ import com.amm.stores.api.dto.stores.Store;
 public class MockStoreProvider implements StoreProvider {
 	private Map<String,Store> map = new HashMap<String,Store>();
 
-	public Store upsert(Store store) throws Exception {
+	public void upsert(Store store) throws Exception {
 		map.put(store.getStoreId(),store);
 		return store;
 	}

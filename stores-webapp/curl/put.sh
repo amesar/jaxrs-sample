@@ -7,7 +7,7 @@ if [ $# -lt 2 ] ; then
   fi
 id=$1
 ifile=$2
-url=$STORES_URL/$id?request_id=$REQUEST_ID
+url=$STORES_URL/$id
 
 curl $OPTS -X PUT -T $ifile $url | tee $BODY_FILE
 

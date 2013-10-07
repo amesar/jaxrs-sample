@@ -21,18 +21,16 @@ public class StoreService {
 		this.storeValidator = storeValidator ;
 	}
 
-	public Store upsert(Store store) throws Exception {
+	public void upsert(Store store) throws Exception {
+		Loggers.REQUESTS.info("upsert: store="+store);
 	   	List<String> errors = storeValidator.validate(store);
 	   	if (errors.size() > 0) {
 			String emsg = "CLIENT: upsert: ["+errors.get(0)+"] store="+store;
-			Loggers.REQUESTS.error(emsg);
 			logger.error(emsg);
 		   	throw new InvalidFormatException(errors);
 		}
 		try {
-			Store store2 = storeProvider.upsert(store);
-			Loggers.REQUESTS.info("upsert: store="+store);
-			return store2; // TODO: perhaps validate this one too? Not clear what biz need is for this.
+			storeProvider.upsert(store);
 		} catch (Exception e) {
 			String emsg = "SERVER: upsert: ["+e.getMessage()+"] store="+store;
 			Loggers.REQUESTS.error(emsg);
@@ -42,9 +40,9 @@ public class StoreService {
 	}
 
 	public void delete(String storeId) throws Exception {
+		Loggers.REQUESTS.info("delete: storeId="+storeId);
 		try {
 			storeProvider.delete(storeId);
-			Loggers.REQUESTS.info("delete: storeId="+storeId);
 		} catch (Exception e) {
 			Loggers.REQUESTS.error("delete: storeId="+storeId);
 			throw e ;

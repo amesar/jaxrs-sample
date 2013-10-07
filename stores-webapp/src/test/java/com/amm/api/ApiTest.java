@@ -19,9 +19,7 @@ public class ApiTest extends BaseTest {
 		Store store = getRefStore();
 		logger.info("store="+store);
 		client.upsert(store);
-		Store store2 = client.get(refStoreId);
-		Assert.assertNotNull(store2);
-		//Assert.assertEquals(store2,store);
+		client.get(refStoreId);
 	}
 
 	@Test
@@ -29,8 +27,7 @@ public class ApiTest extends BaseTest {
 		Store store = getRefStore();
 		client.upsert(store);
 		client.delete(refStoreId);
-		Store store2 = client.get(refStoreId);
-		Assert.assertNull(store2);
+		client.get(refStoreId);
 	}
 
 	@Test
@@ -47,7 +44,7 @@ public class ApiTest extends BaseTest {
 	}
 
 	@Test (expectedExceptions = StoresApiClientException.class)
-	public void upsert_MissingStoreId() throws Exception { // StoreId
+	public void upsert_MissingStoreId() throws Exception { 
 		Store store = getRefStore();
 		store.setStoreId(null);
 		logger.debug("store="+store);

@@ -5,7 +5,7 @@ import com.amm.stores.api.dto.stores.Store;
 
 public interface StoreProvider {
 
-	public Store upsert(Store store) throws Exception ;
+	public void upsert(Store store) throws Exception ;
 
 	public void delete(String ppHereStoreId) throws Exception ;
 

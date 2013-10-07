@@ -72,7 +72,7 @@ public class StoresApiClient {
 		}
 	}
 
-	public Store upsert(Store store) throws Exception {
+	public void upsert(Store store) throws Exception {
 		if (store.getStoreId() == null)
 			throw new StoresApiClientException("StoresApiClient: StoreId is required to form resource URL");
 		String url = makeUrl(store.getStoreId());
@@ -92,10 +92,6 @@ public class StoresApiClient {
 			long time = System.currentTimeMillis()-startTime;
 			logger.info("url="+url+" status="+statusCode+" bytes="+length+" time="+time);
 			checkError(statusCode, method) ;
-			
-			String content = method.getResponseBodyAsString();
-			//logger.debug("response: "+content);
-			return mapper.readValue(content, Store.class);
 		} finally {
 			method.releaseConnection();
 		}
