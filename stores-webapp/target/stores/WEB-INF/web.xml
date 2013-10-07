@@ -1,0 +1,141 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+     version="2.4">
+
+  <display-name>stores</display-name>
+  <description>stores</description>
+
+<!-- ****  Context Params ****  -->
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/classes/appContext.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>stores</param-value>
+  </context-param>
+
+<!-- ****  Listeners ****  -->
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+   <listener>
+    <listener-class>
+        org.springframework.web.context.request.RequestContextListener
+    </listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.amm.stores.rest.metrics.MetricsServletContextListener</listener-class>
+  </listener>
+
+<!-- ****  Filters ****  -->
+
+  <filter>
+    <filter-name>auditFilter</filter-name>
+    <filter-class>com.amm.stores.web.AuditFilter</filter-class>
+<!--
+-->
+  </filter>
+
+<!-- ****  Servlets ****  -->
+
+<!-- ** CXF -->
+
+   <servlet>
+     <servlet-name>cxf</servlet-name>
+     <display-name>cxf</display-name>
+     <description>Apache CXF WS Servlet</description>
+     <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+
+     <!-- registers extension mappings -->
+
+     <init-param>
+      <param-name>jaxrs.extensions</param-name>
+      <param-value>
+        xml=application/xml
+        json=application/json
+      </param-value>
+     </init-param>
+
+     <load-on-startup>1</load-on-startup>
+
+  </servlet>
+
+<!-- ** codahale metrics -->
+
+  <servlet>
+    <servlet-name>metrics</servlet-name>
+    <display-name>metrics</display-name>
+    <servlet-class>com.codahale.metrics.servlets.AdminServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>metrics-metrics</servlet-name>
+    <display-name>metrics-metrics</display-name>
+    <servlet-class>com.codahale.metrics.servlets.MetricsServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>metrics-ping</servlet-name>
+    <display-name>metrics-ping</display-name>
+    <servlet-class>com.codahale.metrics.servlets.PingServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+     <servlet-name>metrics-threads</servlet-name>
+     <display-name>metrics-threads</display-name>
+     <servlet-class>com.codahale.metrics.servlets.ThreadDumpServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+     <servlet-name>metrics-healthcheck</servlet-name>
+     <display-name>metrics-healthcheck</display-name>
+     <servlet-class>com.codahale.metrics.servlets.HealthCheckServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+  </servlet>
+
+<!-- ****  Servlet Mapping ****  -->
+
+<!-- ** CXF -->
+
+  <servlet-mapping>
+    <servlet-name>cxf</servlet-name>
+    <url-pattern>/v1/*</url-pattern>
+  </servlet-mapping>
+
+<!-- ** codahale metrics -->
+
+  <servlet-mapping>
+    <servlet-name>metrics</servlet-name>
+    <url-pattern>/metrics</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>metrics-metrics</servlet-name>
+    <url-pattern>/metrics/metrics</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>metrics-ping</servlet-name>
+    <url-pattern>/metrics/ping</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>metrics-threads</servlet-name>
+    <url-pattern>/metrics/threads</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>metrics-healthcheck</servlet-name>
+    <url-pattern>/metrics/healthcheck</url-pattern>
+  </servlet-mapping>
+
+<!-- ****  Other ****  -->
+
+  <session-config>
+      <session-timeout>60</session-timeout>
+  </session-config>
+
+</web-app>

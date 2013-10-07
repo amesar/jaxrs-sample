@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util.xsd
+      http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<!-- do not use import statements if CXFServlet init parameters link to this beans.xml -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<!-- ** CXF JAX-RS API ** -->
+
+	<jaxrs:server id="apiService" address="/">
+
+<!-- debug
+		<jaxrs:inInterceptors>
+			<ref bean="logInbound" />
+		</jaxrs:inInterceptors>
+-->
+
+		<jaxrs:providers>
+
+			<!-- Exception Mappers -->
+
+            <ref bean="exceptionMapper"/>
+            <bean class="com.amm.common.jaxrs.exceptions.WebApplicationExceptionMapper" />
+            <bean class="com.amm.common.jaxrs.exceptions.InvalidFormatExceptionMapper" />
+            <bean class="com.amm.common.jaxrs.exceptions.jackson2.UnrecognizedPropertyExceptionMapper" />
+            <bean class="com.amm.common.jaxrs.exceptions.jackson2.JsonParseExceptionMapper" />
+            <bean class="com.amm.common.jaxrs.exceptions.jackson2.JsonMappingExceptionMapper" />
+
+			<!-- JAXB Provider customization - Jackson 2 instead of default Jettison -->
+
+			<bean class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider" />
+
+<!--
+			<ref bean="authenticationHandler" />
+-->
+
+		</jaxrs:providers>
+
+		<jaxrs:serviceBeans>
+			<ref bean="storeResource" />
+			<ref bean="adminResource" />
+		</jaxrs:serviceBeans>
+
+	</jaxrs:server>
+
+	<!-- ** CXF JAXB Provider ** -->
+
+	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
+		<property name="marshallerProperties">
+			<map>
+				<!-- Pretty Print only works for XML (will be slower) : TODO for JSON doesnt work -->
+				<entry key="jaxb.formatted.output">
+					<value type="java.lang.Boolean">true</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- ** Exception Mapper Providers ** -->
+
+	<bean id="exceptionMapper" class="com.amm.common.jaxrs.exceptions.ExceptionMapper" />
+
+	<!-- ** CXF Request Handlers ** -->
+
+	<bean id="authenticationHandler" class="com.amm.stores.rest.AuthenticationHandler" >
+       <constructor-arg ref="credentials" />
+	</bean>
+
+    <util:map id="credentials">
+      <entry key="john" value="doe" />
+      <entry key="guest" value="guest" />
+    </util:map>
+
+	<!-- ** CXF Interceptors ** -->
+
+<!-- debug
+	<bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+	<bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+-->
+
+	<!-- ** REST Resources ** -->
+
+	<bean id="storeResource" class="com.amm.stores.rest.StoreResource" >
+        <constructor-arg ref="storeService" />
+	</bean>
+
+	<bean id="adminResource" class="com.amm.stores.rest.AdminResource" >
+        <constructor-arg ref="storeResource" />
+	</bean>
+
+</beans>
