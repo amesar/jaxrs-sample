@@ -378,23 +378,15 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Point Atlas Java Remoting -->
-
-        <dependency>
-            <groupId>com.where.point</groupId>
-            <artifactId>point.esapi.stores</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/point-atlas-webmodule-api-esapi-figserver-v100-contract-SNAPSHOT.jar</systemPath>
-        </dependency>
-
         <!-- Mongo -->
 
+<!--
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>${mongodb.version}</version>
         </dependency>
+-->
 
         <!-- Test -->
 
