@@ -4,6 +4,7 @@
   <test name="Stores Integration Tests"   >
     <classes>
       <class name="com.amm.stores.api.ApiTest" />
+      <class name="com.amm.stores.api.LocationTest" />
     </classes>
   </test>
 </suite>
