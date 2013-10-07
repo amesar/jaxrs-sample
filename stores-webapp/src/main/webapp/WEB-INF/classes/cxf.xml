@@ -69,9 +69,11 @@
 
 	<!-- ** CXF Request Handlers ** -->
 
+<!--
 	<bean id="authenticationHandler" class="com.amm.stores.rest.AuthenticationHandler" >
        <constructor-arg ref="credentials" />
 	</bean>
+-->
 
     <util:map id="credentials">
       <entry key="john" value="doe" />
