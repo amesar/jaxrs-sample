@@ -78,14 +78,13 @@ public class StoreResource {
 	@Path("/{storeId}")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response upsert(Store store, @PathParam("storeId") String storeId)
+	public void upsert(Store store, @PathParam("storeId") String storeId)
 			throws Exception {
 		logger.debug("storeId=" + storeId+" store="+store);
 		Timer.Context context = timerUpsert.time();
 		try {
 			store.setStoreId(storeId);
-			Store store2 = service.upsert(store);
-			return ResponseUtils.createPut(store2);
+            service.upsert(store);
 		} finally {
 			context.stop();
 		}
