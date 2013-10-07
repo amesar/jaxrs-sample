@@ -6,6 +6,7 @@ Template for best practices for REST JAX-RS CXF Spring.
 ## Description
 
 Sample app that adds, retrieves and deletes a store.
+
 * GET - get store
 * PUT - add or update store with client-provided ID
 * DELETE - delete store
