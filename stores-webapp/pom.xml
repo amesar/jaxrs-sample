@@ -47,12 +47,14 @@
                 <version>2.1.1</version>
                 <configuration>
 
+<!--
                    <webResources> 
                       <resource> 
                         <directory>${project.basedir}/lib</directory> 
                         <targetPath>WEB-INF/lib</targetPath> 
                       </resource> 
                     </webResources>
+-->
 
                     <webappDirectory>target/${war.name}</webappDirectory>
                     <warName>${war.name}</warName>
