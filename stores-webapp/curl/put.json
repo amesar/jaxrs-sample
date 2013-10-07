@@ -1,0 +1,13 @@
+{
+  "store_id" : "Y7WELXE73SP78",
+  "expire_date" : "2013-01-17T13:06:26Z",
+  "name" : "Antonio Rivera",
+  "location" : {
+    "lat" : 40.83638083615808,
+    "lng" : -73.84744890687338
+  },
+  "default_currency" : "USD",
+  "payment_type" : "PPH",
+  "mobility_type" : "MOBILE",
+  "phone" : "6178206250"
+}
