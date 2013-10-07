@@ -21,12 +21,10 @@
      <modules>
           <module>common-util</module>
           <module>common-jetty</module>
-<!--
           <module>common-jaxrs</module>
           <module>stores-api-dto</module>
           <module>stores-api-client</module>
           <module>stores-webapp</module>
--->
      </modules>
 
      <dependencies>
