@@ -35,9 +35,9 @@ The build creates target/stores-webapp/target/stores.war which you can either:
 ## Running sample curl client scripts
 
 * cd [stores-webapp/curl](stores-webapp/curl/README.md) 
-* put.sh myStoreId put.json
-* delete.sh myStoreId 
-* get.sh myStoreId 
+* put.sh $myStoreId put.json
+* delete.sh $myStoreId 
+* get.sh $myStoreId 
 
 ## TODO
 * Logging - move to logback instead of log4j

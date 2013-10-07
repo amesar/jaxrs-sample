@@ -38,8 +38,8 @@ public class StoreResource {
 	private final AtomicLong getCount = new AtomicLong();
 	private MetricRegistry metricRegistry = MetricState.REGISTRY;
 	private Timer timerGet;
-	private Timer timerCheckIn;
-	private Timer timerCheckOut;
+	private Timer timerUpsert;
+	private Timer timerDelete;
 	private Counter counterGet;
 	
 	public StoreResource(StoreService service) {
@@ -47,8 +47,8 @@ public class StoreResource {
 		logger.debug("service=" + service);
 		counterGet = metricRegistry.counter(name(StoreResource.class, "counterGet"));
 		timerGet = metricRegistry.timer(name(StoreResource.class, "timerGet"));
-		timerCheckIn = metricRegistry.timer(name(StoreResource.class, "timerCheckIn"));
-		timerCheckOut = metricRegistry.timer(name(StoreResource.class, "timerCheckOut"));
+		timerUpsert = metricRegistry.timer(name(StoreResource.class, "timerUpsert"));
+		timerDelete = metricRegistry.timer(name(StoreResource.class, "timerDelete"));
 		JmxReporter reporter = JmxReporter.forRegistry(metricRegistry).build();
 		reporter.start();
 	}
@@ -81,7 +81,7 @@ public class StoreResource {
 	public Response upsert(Store store, @PathParam("storeId") String storeId)
 			throws Exception {
 		logger.debug("storeId=" + storeId+" store="+store);
-		Timer.Context context = timerCheckIn.time();
+		Timer.Context context = timerUpsert.time();
 		try {
 			store.setStoreId(storeId);
 			Store store2 = service.upsert(store);
@@ -95,7 +95,7 @@ public class StoreResource {
 	@Path("/{storeId}")
 	public void delete(@PathParam("storeId") String storeId) throws Exception {
 		logger.debug("storeId=" + storeId);
-		Timer.Context context = timerCheckOut.time();
+		Timer.Context context = timerDelete.time();
 		try {
 			service.delete(storeId);
 		} finally {
@@ -106,8 +106,8 @@ public class StoreResource {
 	public Response info() throws Exception {
 		Map<String,String> map = new LinkedHashMap<String,String>();
 		map.put("service",service.toString());
-		map.put("CheckIn","count="+timerCheckIn.getCount()+" mean="+timerCheckIn.getMeanRate());
-		map.put("CheckOut","count="+timerCheckOut.getCount()+" mean="+timerCheckOut.getMeanRate());
+		map.put("Upsert","count="+timerUpsert.getCount()+" mean="+timerUpsert.getMeanRate());
+		map.put("Delete","count="+timerDelete.getCount()+" mean="+timerDelete.getMeanRate());
 		map.put("Get","count="+timerGet.getCount()+" mean="+timerGet.getMeanRate());
 		return ResponseUtils.createGet(map);
 	}
