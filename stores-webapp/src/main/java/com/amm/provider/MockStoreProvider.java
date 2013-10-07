@@ -11,7 +11,6 @@ public class MockStoreProvider implements StoreProvider {
 
 	public void upsert(Store store) throws Exception {
 		map.put(store.getStoreId(),store);
-		return store;
 	}
 
 	public void delete(String storeId) throws Exception {

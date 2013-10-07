@@ -22,6 +22,7 @@ public class StoreService {
 	}
 
 	public void upsert(Store store) throws Exception {
+System.out.println(">> upsert: store="+store);
 		Loggers.REQUESTS.info("upsert: store="+store);
 	   	List<String> errors = storeValidator.validate(store);
 	   	if (errors.size() > 0) {
