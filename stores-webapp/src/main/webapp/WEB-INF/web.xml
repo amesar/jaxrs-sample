@@ -36,12 +36,12 @@
 
 <!-- ****  Filters ****  -->
 
+<!--
   <filter>
     <filter-name>auditFilter</filter-name>
     <filter-class>com.amm.stores.web.AuditFilter</filter-class>
-<!--
--->
   </filter>
+-->
 
 <!-- ****  Servlets ****  -->
 
