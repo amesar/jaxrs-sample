@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+  
+<suite name="Stores Integration Test Suite" >
+  <test name="Stores Integration Tests"   >
+    <classes>
+      <class name="com.amm.stores.api.ApiTest" />
+    </classes>
+  </test>
+</suite>
