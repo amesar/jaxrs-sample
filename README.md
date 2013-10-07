@@ -1,5 +1,5 @@
 
 # Sample JAX-RS CXF-based REST API
 
-Under construction...
+Template for best practices for REST JAX-RS CXF Spring.
 
