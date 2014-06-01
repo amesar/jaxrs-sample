@@ -23,4 +23,6 @@
     <property name="attributeSource" ref="jmxAttributeSource" />
   </bean>
 
+  <bean id="LoggerConfigMBean" class="com.amm.util.LoggerConfigMBean" />
+
 </beans>
