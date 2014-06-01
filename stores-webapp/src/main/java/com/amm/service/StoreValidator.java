@@ -26,7 +26,7 @@ public class StoreValidator {
 	}
 
 	public List<String> validate(Store store) {
-	   	List<String> errors = ValidatorUtils.getErrors(store);
+		List<String> errors = ValidatorUtils.getErrors(store);
 		if (!currencyCodes.contains(store.getDefaultCurrency()))
 			errors.add("Illegal ISO 4217 currency code: "+store.getDefaultCurrency());
 		return errors;
