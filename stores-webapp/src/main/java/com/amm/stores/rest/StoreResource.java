@@ -84,7 +84,7 @@ public class StoreResource {
 		Timer.Context context = timerUpsert.time();
 		try {
 			store.setStoreId(storeId);
-            service.upsert(store);
+			service.upsert(store);
 		} finally {
 			context.stop();
 		}
