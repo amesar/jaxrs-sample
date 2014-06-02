@@ -1,12 +1,12 @@
 
-# curl scripts to invoke the Stores API
+# curl scripts to invoke the Stores REST API
 
 ##  Scripts 
 
   * get.sh $storeId - Get store details
-  * put.sh $storeId $jsonFile - Check in store
-  * delete.sh $storeId - Check out store
-  * info.sh - Call stores/info resource
+  * put.sh $storeId $jsonFile - Add or update a store
+  * delete.sh $storeId - Delete store
+  * info.sh - Display system information
 
 ##  Files
 
