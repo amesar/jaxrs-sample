@@ -23,7 +23,7 @@ Sample app that adds, retrieves and deletes a store from a non-persistent in-mem
 ## Modules
 
 * [stores-webapp](stores-webapp/README.md) - API web server
-* [stores-api-client](stores-api-client/README.md) - API service client 
+* [stores-api-client](stores-api-client/README.md) - API client 
 * [stores-api-dto](stores-api-dto/README.md) - API DTO objects shared by server and client
 * [common-jaxrs](common-jaxrs/README.md) - Common HTTP and JAX-RS utilities
 * [common-util](common-util/README.md) - Common utilities
