@@ -1,11 +1,11 @@
 {
-  "name" : "Antonio Rivera",
+  "name" : "Martin Fierro",
   "location" : {
     "lat" : 40.83638083615808,
     "lng" : -73.84744890687338
   },
   "default_currency" : "USD",
-  "payment_type" : "PPH",
+  "payment_type" : "SQR",
   "mobility_type" : "MOBILE",
-  "phone" : "6178206250"
+  "phone" : "2121239876"
 }
