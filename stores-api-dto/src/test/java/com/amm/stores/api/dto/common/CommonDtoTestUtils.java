@@ -17,7 +17,6 @@ public class CommonDtoTestUtils {
 	private static double [] [] invalidLocs = { { 942,71 }, {42,971}, { 942,971 }, {-999,999} } ;
 
 	private static double [] [] validLocs = { { 42,71 }, {42,-71}, { -42,71 }, {-42,-71}, {-90,90} } ;
-	// {0,0}  // TODO: Atlas croaks on but this is a valid GP in Gulf of Guinea!
 
 	public static List<Location> getInvalidLocations() {
 		List<Location> list = new ArrayList<Location>();
@@ -33,10 +32,10 @@ public class CommonDtoTestUtils {
 		return list;
 	}
 
-	public static Location newLocation(double lat, double lng) {
+	public static Location newLocation(double lat, double lon) {
 		Location loc = new Location();
 		loc.setLat(lat);
-		loc.setLng(lng);
+		loc.setLon(lon);
 		return loc;
 	}
 }

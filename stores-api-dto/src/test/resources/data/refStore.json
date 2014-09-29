@@ -2,7 +2,7 @@
   "name" : "Acme",
   "location" : {
     "lat" : 40.83638083615808,
-    "lng" : -73.84744890687338
+    "lon" : -73.84744890687338
   },
   "store_id" : "923ab197",
   "default_currency" : "USD",

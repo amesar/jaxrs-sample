@@ -22,20 +22,20 @@ public class Location {
 	@NotNull
 	@DecimalMin("-180.0")
 	@DecimalMax("180.0")
-	@JsonProperty("lng")
-	private Double lng;
-	public Double getLng() { 
-		return lng;
+	@JsonProperty("lon")
+	private Double lon;
+	public Double getLon() { 
+		return lon;
 	}
-	public void setLng(Double lng) {
-		this.lng = lng;
+	public void setLon(Double lon) {
+		this.lon = lon;
 	}
 
 	@Override
 	public String toString() {
 		return 
 			 "lat="+lat
-			+" lng="+lng
+			+" lon="+lon
 			;
 	}
 }
