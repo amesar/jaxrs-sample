@@ -1,9 +1,10 @@
 {
-  "name" : "Martin Fierro",
+  "name" : "Acme",
   "location" : {
     "lat" : 40.83638083615808,
     "lng" : -73.84744890687338
   },
+  "store_id" : "923ab197",
   "default_currency" : "USD",
   "payment_type" : "SQR",
   "mobility_type" : "MOBILE",
