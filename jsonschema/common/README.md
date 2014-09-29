@@ -1,3 +1,0 @@
-
-# Common objects for APIs
-
