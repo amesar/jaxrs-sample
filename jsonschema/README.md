@@ -1,5 +1,5 @@
 
-# Common objects for APIs
+# JSON Schema definitions
 
 * Store.json 
 * Address.json 
