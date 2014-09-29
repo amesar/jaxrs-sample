@@ -112,8 +112,8 @@ public class Store {
 	}
 
 	public static enum PaymentType {
-		PPH,
-		GCI
+		SQR,
+		PPL
 	}
 	@NotNull
 	@JsonProperty("payment_type")
