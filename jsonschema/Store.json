@@ -1,60 +1,60 @@
 {
-	"$schema" : "http://json-schema.org/draft-03/schema#",
-	"id" : "http://json-schema.org/draft-03/schema#",
-	"description" : "Store",
-	"type" : "object",
-	"properties" : {
-		"store_id" : { 
-			"type" : "string", 
-			"required" : true 
-		},
-		"name" : { 
-			"type" : "string", 
-			"required" : true 
-		},
-		"logo_url" : { 
-			"type" : "string", 
-			"required" : false 
-		},
-		"message" : { 
-			"type" : "string", 
-			"required" : false 
-		},
-		"expire_date" : { 
-			"type" : "string", 
-            "format" : "date-time",
-			"required" : false 
-		},
-		"mobility_type" : { 
-			"type" : "string", 
-			"required" : true 
-		},
-		"phone" : { 
-			"type" : "string", 
-			"required" : false 
-		},
-		"default_currency" : { 
-			"type" : "string", 
-			"required" : true 
-		},
-		"address" : { 
+    "$schema" : "http://json-schema.org/draft-03/schema#",
+    "id" : "http://json-schema.org/draft-03/schema#",
+    "description" : "Store",
+    "type" : "object",
+    "properties" : {
+        "store_id" : { 
+            "type" : "string", 
+            "required" : true 
+        },
+        "name" : { 
+            "type" : "string", 
+            "required" : true 
+        },
+        "logo_url" : { 
+            "type" : "string", 
+            "required" : false 
+        },
+        "message" : { 
+            "type" : "string", 
+            "required" : false 
+        },
+        "expire_date" : { 
+            "type" : "string", 
+             "format" : "date-time",
+            "required" : false 
+        },
+        "mobility_type" : { 
+            "type" : "string", 
+            "required" : true 
+        },
+        "phone" : { 
+            "type" : "string", 
+            "required" : false 
+        },
+        "default_currency" : { 
+            "type" : "string", 
+            "required" : true 
+        },
+        "address" : { 
             "$ref" : "Address.json",
-			"required" : false 
-		},
-		"location" : { 
+            "required" : false 
+        },
+        "location" : { 
             "$ref" : "Location.json",
-			"required" : true 
-		},
-		"payment_type" : { 
+            "required" : true 
+        },
+        "payment_type" : { 
             "type" : "string",
             "enum" : [ "PPL", "SQR" ],
-			"required" : true 
-		},
-		"gratuity_type" : { 
-			"type" : "string", 
+            "required" : true 
+        },
+        "gratuity_type" : { 
+            "type" : "string", 
             "enum" : [ "STANDARD" ],
-			"required" : false 
-		}
-	},
-	"additionalProperties" : false
+            "required" : false 
+        }
+    },
+    "additionalProperties" : false
 }
