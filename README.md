@@ -180,9 +180,11 @@ Return a store.
 
 ### PUT stores/v1/stores/{STORE_ID}
 
-Add or change a store.
+Add or update a store.
 
 ### DELETE stores/v1/stores/{STORE_ID}
+
+Delete a store.
 
 ## TODO
 * Logging - move to logback instead of log4j
